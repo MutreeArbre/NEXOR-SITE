@@ -1,0 +1,876 @@
+<!doctype html>
+<html lang="en" class="h-full">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NEXOR - Precision Through Design</title>
+  <script src="/_sdk/element_sdk.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+        body {
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+        
+        .apple-blur {
+            backdrop-filter: saturate(180%) blur(20px);
+            -webkit-backdrop-filter: saturate(180%) blur(20px);
+        }
+        
+        .hero-gradient {
+            background: linear-gradient(135deg, #000000 0%, #1a1a1a 50%, #000000 100%);
+        }
+        
+        .glass-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .apple-button {
+            background: linear-gradient(135deg, #007AFF 0%, #0051D5 100%);
+            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        
+        .apple-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 122, 255, 0.3);
+        }
+        
+        .smooth-reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        
+        .smooth-reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .product-card {
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            transform-style: preserve-3d;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-8px) rotateX(5deg);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+        }
+        
+        .floating-orb {
+            position: absolute;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(0, 122, 255, 0.3) 0%, transparent 70%);
+            animation: float-gentle 6s ease-in-out infinite;
+        }
+        
+        @keyframes float-gentle {
+            0%, 100% { transform: translateY(0px) scale(1); }
+            50% { transform: translateY(-20px) scale(1.1); }
+        }
+        
+        .text-shimmer {
+            background: linear-gradient(90deg, #ffffff 0%, #007AFF 50%, #ffffff 100%);
+            background-size: 200% 100%;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: shimmer 3s ease-in-out infinite;
+        }
+        
+        @keyframes shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+        
+        .parallax-section {
+            transform-style: preserve-3d;
+        }
+        
+        .section-divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.2) 50%, transparent 100%);
+        }
+        
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #007AFF 0%, #0051D5 100%);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        
+        .feature-icon:hover {
+            transform: scale(1.1) rotateY(10deg);
+            box-shadow: 0 10px 30px rgba(0, 122, 255, 0.4);
+        }
+    </style>
+  <style>@view-transition { navigation: auto; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+ </head>
+ <body class="h-full bg-black text-white overflow-x-hidden">
+  <main class="min-h-full"><!-- Navigation -->
+   <nav class="fixed top-0 w-full z-50 apple-blur bg-black/80">
+    <div class="max-w-6xl mx-auto px-6 py-4">
+     <div class="flex items-center justify-between">
+      <div class="text-2xl font-semibold" id="nav-logo">
+       NEXOR
+      </div>
+      <div class="hidden md:flex space-x-8 text-sm"><a href="#about" class="text-gray-300 hover:text-white transition-colors duration-300">About</a> <a href="#products" class="text-gray-300 hover:text-white transition-colors duration-300">Products</a> <a href="#innovation" class="text-gray-300 hover:text-white transition-colors duration-300">Innovation</a> <a href="#contact" class="text-gray-300 hover:text-white transition-colors duration-300">Contact</a>
+      </div>
+     </div>
+    </div>
+   </nav><!-- Hero Section -->
+   <section class="relative min-h-screen flex items-center justify-center hero-gradient overflow-hidden"><!-- Floating Orbs -->
+    <div class="floating-orb w-96 h-96 top-20 left-10 opacity-30"></div>
+    <div class="floating-orb w-64 h-64 bottom-20 right-20 opacity-20" style="animation-delay: -3s;"></div>
+    <div class="relative z-10 text-center max-w-4xl mx-auto px-6">
+     <div class="smooth-reveal">
+      <h1 class="text-6xl md:text-8xl font-thin mb-6 tracking-tight" id="hero-title">Think Different.<br><span class="text-shimmer">Build Perfect.</span></h1>
+     </div>
+     <div class="smooth-reveal" style="transition-delay: 0.2s;">
+      <p class="text-xl md:text-2xl text-gray-300 font-light mb-12 max-w-3xl mx-auto leading-relaxed" id="hero-subtitle">NEXOR redefines precision manufacturing through systematic aesthetics and innovative design philosophy.</p>
+     </div>
+     <div class="smooth-reveal flex flex-col sm:flex-row gap-4 justify-center items-center" style="transition-delay: 0.4s;"><button class="apple-button text-white px-8 py-4 rounded-full font-medium text-lg" id="hero-cta"> Explore Innovation </button> <button class="glass-card text-white px-8 py-4 rounded-full font-medium text-lg hover:bg-white/10 transition-all duration-300"> Watch Film </button>
+     </div>
+    </div>
+   </section><!-- Section Divider -->
+   <div class="section-divider"></div><!-- About Section -->
+   <section id="about" class="py-32 bg-black">
+    <div class="max-w-6xl mx-auto px-6">
+     <div class="text-center mb-20">
+      <div class="smooth-reveal">
+       <h2 class="text-5xl md:text-6xl font-thin mb-8 tracking-tight" id="about-title">Precision Redefined</h2>
+      </div>
+      <div class="smooth-reveal" style="transition-delay: 0.2s;">
+       <p class="text-xl text-gray-300 font-light max-w-4xl mx-auto leading-relaxed" id="about-description">We believe that true innovation comes from the perfect harmony of design, craftsmanship, and technology. NEXOR creates a global ecosystem where systematic aesthetics meets precision manufacturing.</p>
+      </div>
+     </div><!-- Core Values -->
+     <div class="grid md:grid-cols-3 gap-12">
+      <div class="text-center smooth-reveal" style="transition-delay: 0.1s;">
+       <div class="feature-icon mx-auto mb-6 relative overflow-hidden"><!-- Geometric Pattern Background -->
+        <div class="absolute inset-0 opacity-15">
+         <svg viewbox="0 0 60 60" class="w-full h-full"><defs>
+           <pattern id="innovation-pattern" x="0" y="0" width="15" height="15" patternunits="userSpaceOnUse">
+            <path d="M7.5,0 L15,7.5 L7.5,15 L0,7.5 Z" fill="none" stroke="white" stroke-width="0.5" opacity="0.4" />
+            <circle cx="7.5" cy="7.5" r="2" fill="white" opacity="0.2" />
+           </pattern>
+          </defs> <rect width="60" height="60" fill="url(#innovation-pattern)" />
+         </svg>
+        </div><!-- Main Icon -->
+        <svg class="w-8 h-8 text-white relative z-10" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z" /> <circle cx="12" cy="12" r="1.5" fill="currentColor" opacity="0.8" />
+        </svg>
+       </div>
+       <h3 class="text-2xl font-light mb-4">Innovation</h3>
+       <p class="text-gray-400 leading-relaxed">Breakthrough thinking that challenges conventional manufacturing paradigms.</p>
+      </div>
+      <div class="text-center smooth-reveal" style="transition-delay: 0.2s;">
+       <div class="feature-icon mx-auto mb-6 relative overflow-hidden"><!-- Geometric Pattern Background -->
+        <div class="absolute inset-0 opacity-15">
+         <svg viewbox="0 0 60 60" class="w-full h-full"><defs>
+           <pattern id="precision-pattern" x="0" y="0" width="10" height="10" patternunits="userSpaceOnUse">
+            <circle cx="5" cy="5" r="1" fill="white" opacity="0.3" />
+            <circle cx="5" cy="5" r="3" fill="none" stroke="white" stroke-width="0.3" opacity="0.4" />
+           </pattern>
+          </defs> <rect width="60" height="60" fill="url(#precision-pattern)" />
+         </svg>
+        </div><!-- Main Icon -->
+        <svg class="w-8 h-8 text-white relative z-10" fill="none" stroke="currentColor" viewbox="0 0 24 24"><circle cx="12" cy="12" r="3" stroke-width="1.5" /> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 1v6m0 10v6m11-9h-6M6 12H1" /> <circle cx="12" cy="12" r="1" fill="currentColor" /> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M16.24 7.76l-8.48 8.48 M7.76 7.76l8.48 8.48" opacity="0.4" />
+        </svg>
+       </div>
+       <h3 class="text-2xl font-light mb-4">Precision</h3>
+       <p class="text-gray-400 leading-relaxed">Uncompromising attention to detail in every aspect of design and manufacturing.</p>
+      </div>
+      <div class="text-center smooth-reveal" style="transition-delay: 0.3s;">
+       <div class="feature-icon mx-auto mb-6 relative overflow-hidden"><!-- Geometric Pattern Background -->
+        <div class="absolute inset-0 opacity-15">
+         <svg viewbox="0 0 60 60" class="w-full h-full"><defs>
+           <pattern id="global-pattern" x="0" y="0" width="20" height="20" patternunits="userSpaceOnUse">
+            <circle cx="10" cy="10" r="8" fill="none" stroke="white" stroke-width="0.5" opacity="0.3" />
+            <path d="M2,10 L18,10 M10,2 L10,18" stroke="white" stroke-width="0.3" opacity="0.4" />
+           </pattern>
+          </defs> <rect width="60" height="60" fill="url(#global-pattern)" />
+         </svg>
+        </div><!-- Main Icon -->
+        <svg class="w-8 h-8 text-white relative z-10" fill="none" stroke="currentColor" viewbox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke-width="1.5" /> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z" /> <circle cx="12" cy="12" r="2" fill="currentColor" opacity="0.6" />
+        </svg>
+       </div>
+       <h3 class="text-2xl font-light mb-4">Global Vision</h3>
+       <p class="text-gray-400 leading-relaxed">Building worldwide standards for systematic aesthetics and manufacturing excellence.</p>
+      </div>
+     </div>
+    </div>
+   </section><!-- Section Divider -->
+   <div class="section-divider"></div><!-- Featured Product Showcase -->
+   <section id="products" class="py-32 bg-black">
+    <div class="max-w-7xl mx-auto px-6"><!-- Hero Product -->
+     <div class="mb-32">
+      <div class="grid lg:grid-cols-2 gap-16 items-center">
+       <div class="smooth-reveal">
+        <div class="text-sm text-blue-500 font-medium mb-4 uppercase tracking-wider">
+         Featured Product
+        </div>
+        <h2 class="text-5xl md:text-6xl font-thin mb-8 tracking-tight">NEXOR Precision<br><span class="text-blue-500">Manufacturing System</span></h2>
+        <p class="text-xl text-gray-300 font-light mb-8 leading-relaxed">Revolutionary automated manufacturing platform that combines AI-driven precision with systematic design principles. Achieving 99.97% accuracy in complex component production.</p><!-- Key Features -->
+        <div class="space-y-4 mb-8">
+         <div class="flex items-center space-x-3">
+          <div class="w-2 h-2 bg-blue-500 rounded-full"></div><span class="text-gray-300">Sub-micron precision manufacturing</span>
+         </div>
+         <div class="flex items-center space-x-3">
+          <div class="w-2 h-2 bg-blue-500 rounded-full"></div><span class="text-gray-300">Real-time quality monitoring</span>
+         </div>
+         <div class="flex items-center space-x-3">
+          <div class="w-2 h-2 bg-blue-500 rounded-full"></div><span class="text-gray-300">Sustainable material optimization</span>
+         </div>
+        </div>
+        <div class="flex space-x-4"><button class="apple-button text-white px-8 py-4 rounded-full font-medium"> Learn More </button> <button class="glass-card text-white px-8 py-4 rounded-full font-medium hover:bg-white/10 transition-all duration-300"> Watch Demo </button>
+        </div>
+       </div>
+       <div class="smooth-reveal" style="transition-delay: 0.3s;"><!-- Product Visualization -->
+        <div class="relative">
+         <div class="glass-card rounded-3xl p-8 aspect-square flex items-center justify-center"><!-- Abstract Product Representation -->
+          <div class="relative w-full h-full"><!-- Central Core -->
+           <div class="absolute inset-1/4 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full animate-pulse"></div><!-- Orbiting Elements -->
+           <div class="absolute inset-0">
+            <div class="absolute top-1/4 left-1/2 w-4 h-4 bg-blue-400 rounded-full transform -translate-x-1/2 animate-ping" style="animation-delay: 0s;"></div>
+            <div class="absolute top-1/2 right-1/4 w-3 h-3 bg-purple-400 rounded-full animate-ping" style="animation-delay: 1s;"></div>
+            <div class="absolute bottom-1/4 left-1/2 w-4 h-4 bg-blue-400 rounded-full transform -translate-x-1/2 animate-ping" style="animation-delay: 2s;"></div>
+            <div class="absolute top-1/2 left-1/4 w-3 h-3 bg-purple-400 rounded-full animate-ping" style="animation-delay: 3s;"></div>
+           </div><!-- Connection Lines -->
+           <div class="absolute inset-0 opacity-30">
+            <svg class="w-full h-full" viewbox="0 0 200 200"><line x1="100" y1="50" x2="100" y2="100" stroke="#3b82f6" stroke-width="1" opacity="0.5">
+              <animate attributename="opacity" values="0.2;0.8;0.2" dur="2s" repeatcount="indefinite" />
+             </line> <line x1="150" y1="100" x2="100" y2="100" stroke="#8b5cf6" stroke-width="1" opacity="0.5">
+              <animate attributename="opacity" values="0.2;0.8;0.2" dur="2s" begin="0.5s" repeatcount="indefinite" />
+             </line> <line x1="100" y1="150" x2="100" y2="100" stroke="#3b82f6" stroke-width="1" opacity="0.5">
+              <animate attributename="opacity" values="0.2;0.8;0.2" dur="2s" begin="1s" repeatcount="indefinite" />
+             </line> <line x1="50" y1="100" x2="100" y2="100" stroke="#8b5cf6" stroke-width="1" opacity="0.5">
+              <animate attributename="opacity" values="0.2;0.8;0.2" dur="2s" begin="1.5s" repeatcount="indefinite" />
+             </line>
+            </svg>
+           </div>
+          </div>
+         </div><!-- Floating Stats -->
+         <div class="absolute -top-4 -right-4 glass-card rounded-2xl p-4 text-center">
+          <div class="text-2xl font-light text-blue-400">
+           99.97%
+          </div>
+          <div class="text-xs text-gray-400">
+           Precision
+          </div>
+         </div>
+         <div class="absolute -bottom-4 -left-4 glass-card rounded-2xl p-4 text-center">
+          <div class="text-2xl font-light text-purple-400">
+           24/7
+          </div>
+          <div class="text-xs text-gray-400">
+           Operation
+          </div>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div><!-- Product Ecosystem -->
+     <div class="text-center mb-20">
+      <div class="smooth-reveal">
+       <h2 class="text-4xl md:text-5xl font-thin mb-8 tracking-tight">Complete Ecosystem</h2>
+      </div>
+      <div class="smooth-reveal" style="transition-delay: 0.2s;">
+       <p class="text-xl text-gray-300 font-light max-w-3xl mx-auto leading-relaxed">Integrated solutions spanning the entire manufacturing lifecycle, from design to delivery.</p>
+      </div>
+     </div>
+     <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8"><!-- NEXOR Craft -->
+      <div class="product-card glass-card rounded-3xl p-8 cursor-pointer group">
+       <div class="mb-8">
+        <div class="w-16 h-16 bg-gradient-to-br from-amber-500 to-orange-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 relative overflow-hidden"><!-- Geometric Pattern Background -->
+         <div class="absolute inset-0 opacity-20">
+          <svg viewbox="0 0 64 64" class="w-full h-full"><defs>
+            <pattern id="craft-pattern" x="0" y="0" width="16" height="16" patternunits="userSpaceOnUse">
+             <circle cx="8" cy="8" r="1" fill="white" opacity="0.3" />
+             <rect x="6" y="6" width="4" height="4" fill="none" stroke="white" stroke-width="0.5" opacity="0.4" />
+            </pattern>
+           </defs> <rect width="64" height="64" fill="url(#craft-pattern)" />
+          </svg>
+         </div><!-- Main Icon -->
+         <svg class="w-8 h-8 text-white relative z-10" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" /> <circle cx="12" cy="12" r="2" fill="currentColor" opacity="0.6" />
+         </svg>
+        </div>
+        <h3 class="text-2xl font-light mb-4 group-hover:text-amber-400 transition-colors duration-300">NEXOR Craft</h3>
+        <p class="text-gray-400 text-sm leading-relaxed mb-6">Artisan-grade precision tools for luxury manufacturing. Used by 200+ premium brands worldwide.</p>
+        <div class="text-amber-400 text-sm font-medium">
+         Active Production
+        </div>
+       </div>
+       <div class="text-xs text-gray-500 uppercase tracking-wider">
+        Learn More →
+       </div>
+      </div><!-- Vent -->
+      <div class="product-card glass-card rounded-3xl p-8 cursor-pointer group">
+       <div class="mb-8">
+        <div class="w-16 h-16 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 relative overflow-hidden"><!-- Geometric Pattern Background -->
+         <div class="absolute inset-0 opacity-20">
+          <svg viewbox="0 0 64 64" class="w-full h-full"><defs>
+            <pattern id="vent-pattern" x="0" y="0" width="12" height="12" patternunits="userSpaceOnUse">
+             <path d="M0,6 L12,6 M3,0 L3,12 M9,0 L9,12" stroke="white" stroke-width="0.5" opacity="0.4" />
+            </pattern>
+           </defs> <rect width="64" height="64" fill="url(#vent-pattern)" />
+          </svg>
+         </div><!-- Main Icon -->
+         <svg class="w-8 h-8 text-white relative z-10" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z" /> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M10 11h4 M10 13h4" opacity="0.6" />
+         </svg>
+        </div>
+        <h3 class="text-2xl font-light mb-4 group-hover:text-emerald-400 transition-colors duration-300">Vent Pro</h3>
+        <p class="text-gray-400 text-sm leading-relaxed mb-6">Smart environmental systems for manufacturing facilities. 40% energy reduction guaranteed.</p>
+        <div class="text-emerald-400 text-sm font-medium">
+         Beta Testing
+        </div>
+       </div>
+       <div class="text-xs text-gray-500 uppercase tracking-wider">
+        Join Beta →
+       </div>
+      </div><!-- Lighting -->
+      <div class="product-card glass-card rounded-3xl p-8 cursor-pointer group">
+       <div class="mb-8">
+        <div class="w-16 h-16 bg-gradient-to-br from-yellow-500 to-orange-500 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 relative overflow-hidden"><!-- Geometric Pattern Background -->
+         <div class="absolute inset-0 opacity-20">
+          <svg viewbox="0 0 64 64" class="w-full h-full"><defs>
+            <pattern id="light-pattern" x="0" y="0" width="16" height="16" patternunits="userSpaceOnUse">
+             <circle cx="8" cy="8" r="3" fill="none" stroke="white" stroke-width="0.5" opacity="0.3" />
+             <circle cx="8" cy="8" r="6" fill="none" stroke="white" stroke-width="0.3" opacity="0.2" />
+            </pattern>
+           </defs> <rect width="64" height="64" fill="url(#light-pattern)" />
+          </svg>
+         </div><!-- Main Icon -->
+         <svg class="w-8 h-8 text-white relative z-10" fill="none" stroke="currentColor" viewbox="0 0 24 24"><circle cx="12" cy="12" r="5" stroke-width="1.5" /> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 1v2m0 18v2m11-9h-2M4 12H2m15.364-6.364l-1.414 1.414M6.05 6.05L4.636 4.636m12.728 12.728l-1.414-1.414M6.05 17.95l-1.414 1.414" /> <circle cx="12" cy="12" r="2" fill="currentColor" opacity="0.8" />
+         </svg>
+        </div>
+        <h3 class="text-2xl font-light mb-4 group-hover:text-yellow-400 transition-colors duration-300">Lumina</h3>
+        <p class="text-gray-400 text-sm leading-relaxed mb-6">Adaptive lighting systems that optimize worker productivity and product quality inspection.</p>
+        <div class="text-yellow-400 text-sm font-medium">
+         Pilot Program
+        </div>
+       </div>
+       <div class="text-xs text-gray-500 uppercase tracking-wider">
+        Apply Now →
+       </div>
+      </div><!-- Materials -->
+      <div class="product-card glass-card rounded-3xl p-8 cursor-pointer group">
+       <div class="mb-8">
+        <div class="w-16 h-16 bg-gradient-to-br from-purple-500 to-indigo-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 relative overflow-hidden"><!-- Geometric Pattern Background -->
+         <div class="absolute inset-0 opacity-20">
+          <svg viewbox="0 0 64 64" class="w-full h-full"><defs>
+            <pattern id="material-pattern" x="0" y="0" width="20" height="20" patternunits="userSpaceOnUse">
+             <polygon points="10,2 18,8 10,14 2,8" fill="none" stroke="white" stroke-width="0.5" opacity="0.3" />
+             <polygon points="10,6 14,8 10,10 6,8" fill="white" opacity="0.2" />
+            </pattern>
+           </defs> <rect width="64" height="64" fill="url(#material-pattern)" />
+          </svg>
+         </div><!-- Main Icon -->
+         <svg class="w-8 h-8 text-white relative z-10" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M9 1L5 3l4 2 4-2-4-2zM9 23l4-2-4-2-4 2 4 2z" /> <polygon points="12,7 16,9 12,11 8,9" fill="currentColor" opacity="0.6" />
+         </svg>
+        </div>
+        <h3 class="text-2xl font-light mb-4 group-hover:text-purple-400 transition-colors duration-300">NeoMaterials</h3>
+        <p class="text-gray-400 text-sm leading-relaxed mb-6">Revolutionary composite materials with 300% strength improvement and carbon-neutral production.</p>
+        <div class="text-purple-400 text-sm font-medium">
+         R&amp;D Phase
+        </div>
+       </div>
+       <div class="text-xs text-gray-500 uppercase tracking-wider">
+        Research →
+       </div>
+      </div>
+     </div>
+    </div>
+   </section><!-- Section Divider -->
+   <div class="section-divider"></div><!-- Case Studies & Testimonials -->
+   <section class="py-32 bg-black">
+    <div class="max-w-7xl mx-auto px-6">
+     <div class="text-center mb-20">
+      <div class="smooth-reveal">
+       <h2 class="text-4xl md:text-5xl font-thin mb-8 tracking-tight">Trusted by Industry Leaders</h2>
+      </div>
+      <div class="smooth-reveal" style="transition-delay: 0.2s;">
+       <p class="text-xl text-gray-300 font-light max-w-3xl mx-auto leading-relaxed">From aerospace to luxury goods, NEXOR systems power the world's most demanding manufacturing operations.</p>
+      </div>
+     </div><!-- Case Studies Grid -->
+     <div class="grid lg:grid-cols-3 gap-8 mb-20"><!-- Case Study 1 -->
+      <div class="glass-card rounded-3xl p-8 smooth-reveal">
+       <div class="mb-6">
+        <div class="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl mb-4 flex items-center justify-center relative overflow-hidden"><!-- Geometric Pattern Background -->
+         <div class="absolute inset-0 opacity-20">
+          <svg viewbox="0 0 48 48" class="w-full h-full"><defs>
+            <pattern id="aerospace-pattern" x="0" y="0" width="12" height="12" patternunits="userSpaceOnUse">
+             <path d="M6,0 L12,6 L6,12 L0,6 Z" fill="none" stroke="white" stroke-width="0.5" opacity="0.4" />
+             <circle cx="6" cy="6" r="1" fill="white" opacity="0.3" />
+            </pattern>
+           </defs> <rect width="48" height="48" fill="url(#aerospace-pattern)" />
+          </svg>
+         </div><!-- Main Icon -->
+         <svg class="w-6 h-6 text-white relative z-10" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" /> <circle cx="12" cy="8" r="1" fill="currentColor" opacity="0.8" />
+         </svg>
+        </div>
+        <h3 class="text-xl font-light mb-2">Aerospace Excellence</h3>
+        <div class="text-sm text-gray-400 mb-4">
+         Leading Aircraft Manufacturer
+        </div>
+       </div>
+       <p class="text-gray-300 text-sm leading-relaxed mb-6">"NEXOR's precision manufacturing system reduced our component defect rate by 94% while increasing production speed by 60%. The systematic approach to quality control is revolutionary."</p>
+       <div class="flex items-center justify-between">
+        <div class="text-blue-400 text-2xl font-light">
+         94%
+        </div>
+        <div class="text-xs text-gray-500">
+         Defect Reduction
+        </div>
+       </div>
+      </div><!-- Case Study 2 -->
+      <div class="glass-card rounded-3xl p-8 smooth-reveal" style="transition-delay: 0.1s;">
+       <div class="mb-6">
+        <div class="w-12 h-12 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-xl mb-4 flex items-center justify-center relative overflow-hidden"><!-- Geometric Pattern Background -->
+         <div class="absolute inset-0 opacity-20">
+          <svg viewbox="0 0 48 48" class="w-full h-full"><defs>
+            <pattern id="watch-pattern" x="0" y="0" width="16" height="16" patternunits="userSpaceOnUse">
+             <circle cx="8" cy="8" r="6" fill="none" stroke="white" stroke-width="0.5" opacity="0.3" />
+             <circle cx="8" cy="8" r="2" fill="white" opacity="0.2" />
+             <path d="M8,2 L8,8 L12,8" stroke="white" stroke-width="0.5" opacity="0.4" />
+            </pattern>
+           </defs> <rect width="48" height="48" fill="url(#watch-pattern)" />
+          </svg>
+         </div><!-- Main Icon -->
+         <svg class="w-6 h-6 text-white relative z-10" fill="none" stroke="currentColor" viewbox="0 0 24 24"><circle cx="12" cy="12" r="7" stroke-width="1.5" /> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 9v3l1.5 1.5" /> <circle cx="12" cy="12" r="1" fill="currentColor" /> <path d="M12 1v2 M12 21v2 M4.22 4.22l1.42 1.42 M18.36 18.36l1.42 1.42 M1 12h2 M21 12h2 M4.22 19.78l1.42-1.42 M18.36 5.64l1.42-1.42" stroke="currentColor" stroke-width="0.5" opacity="0.6" />
+         </svg>
+        </div>
+        <h3 class="text-xl font-light mb-2">Luxury Timepieces</h3>
+        <div class="text-sm text-gray-400 mb-4">
+         Swiss Watch Manufacturer
+        </div>
+       </div>
+       <p class="text-gray-300 text-sm leading-relaxed mb-6">"The precision we achieve with NEXOR Craft tools is unmatched. Our master craftsmen can now focus on artistry while the system ensures perfect technical execution."</p>
+       <div class="flex items-center justify-between">
+        <div class="text-emerald-400 text-2xl font-light">
+         ±0.1μm
+        </div>
+        <div class="text-xs text-gray-500">
+         Precision Level
+        </div>
+       </div>
+      </div><!-- Case Study 3 -->
+      <div class="glass-card rounded-3xl p-8 smooth-reveal" style="transition-delay: 0.2s;">
+       <div class="mb-6">
+        <div class="w-12 h-12 bg-gradient-to-br from-amber-500 to-orange-600 rounded-xl mb-4 flex items-center justify-center relative overflow-hidden"><!-- Geometric Pattern Background -->
+         <div class="absolute inset-0 opacity-20">
+          <svg viewbox="0 0 48 48" class="w-full h-full"><defs>
+            <pattern id="medical-pattern" x="0" y="0" width="12" height="12" patternunits="userSpaceOnUse">
+             <path d="M6,1 L6,11 M1,6 L11,6" stroke="white" stroke-width="0.8" opacity="0.4" />
+             <circle cx="6" cy="6" r="4" fill="none" stroke="white" stroke-width="0.5" opacity="0.3" />
+            </pattern>
+           </defs> <rect width="48" height="48" fill="url(#medical-pattern)" />
+          </svg>
+         </div><!-- Main Icon -->
+         <svg class="w-6 h-6 text-white relative z-10" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" /> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M12 8v4 M10 10h4" opacity="0.8" />
+         </svg>
+        </div>
+        <h3 class="text-xl font-light mb-2">Medical Devices</h3>
+        <div class="text-sm text-gray-400 mb-4">
+         Global Healthcare Leader
+        </div>
+       </div>
+       <p class="text-gray-300 text-sm leading-relaxed mb-6">"NEXOR's systematic quality approach helped us achieve FDA approval 40% faster. The traceability and documentation capabilities are exceptional."</p>
+       <div class="flex items-center justify-between">
+        <div class="text-amber-400 text-2xl font-light">
+         40%
+        </div>
+        <div class="text-xs text-gray-500">
+         Faster Approval
+        </div>
+       </div>
+      </div>
+     </div><!-- Global Impact Stats -->
+     <div class="glass-card rounded-3xl p-12 text-center smooth-reveal">
+      <div class="grid md:grid-cols-4 gap-8">
+       <div>
+        <div class="text-4xl font-thin text-blue-400 mb-2">
+         500+
+        </div>
+        <div class="text-gray-400 text-sm">
+         Global Installations
+        </div>
+       </div>
+       <div>
+        <div class="text-4xl font-thin text-purple-400 mb-2">
+         99.97%
+        </div>
+        <div class="text-gray-400 text-sm">
+         Average Precision
+        </div>
+       </div>
+       <div>
+        <div class="text-4xl font-thin text-emerald-400 mb-2">
+         85%
+        </div>
+        <div class="text-gray-400 text-sm">
+         Efficiency Improvement
+        </div>
+       </div>
+       <div>
+        <div class="text-4xl font-thin text-amber-400 mb-2">
+         24/7
+        </div>
+        <div class="text-gray-400 text-sm">
+         Global Support
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section><!-- Section Divider -->
+   <div class="section-divider"></div><!-- Innovation Section -->
+   <section id="innovation" class="py-32 bg-black">
+    <div class="max-w-6xl mx-auto px-6">
+     <div class="grid lg:grid-cols-2 gap-16 items-center">
+      <div class="smooth-reveal">
+       <h2 class="text-5xl md:text-6xl font-thin mb-8 tracking-tight">The Future of<br><span class="text-blue-500">Manufacturing</span></h2>
+       <p class="text-xl text-gray-300 font-light mb-8 leading-relaxed">Our systematic approach to design and manufacturing creates a new paradigm where aesthetics and functionality converge seamlessly.</p>
+       <div class="space-y-6">
+        <div class="flex items-start space-x-4">
+         <div class="w-2 h-2 bg-blue-500 rounded-full mt-3 flex-shrink-0"></div>
+         <div>
+          <h4 class="text-lg font-medium mb-2">Systematic Design Language</h4>
+          <p class="text-gray-400">Unified visual principles that scale across all product categories.</p>
+         </div>
+        </div>
+        <div class="flex items-start space-x-4">
+         <div class="w-2 h-2 bg-blue-500 rounded-full mt-3 flex-shrink-0"></div>
+         <div>
+          <h4 class="text-lg font-medium mb-2">Global Manufacturing Network</h4>
+          <p class="text-gray-400">Precision facilities worldwide maintaining consistent quality standards.</p>
+         </div>
+        </div>
+        <div class="flex items-start space-x-4">
+         <div class="w-2 h-2 bg-blue-500 rounded-full mt-3 flex-shrink-0"></div>
+         <div>
+          <h4 class="text-lg font-medium mb-2">Sustainable Innovation</h4>
+          <p class="text-gray-400">Environmental responsibility integrated into every design decision.</p>
+         </div>
+        </div>
+       </div>
+      </div>
+      <div class="smooth-reveal" style="transition-delay: 0.3s;">
+       <div class="glass-card rounded-3xl p-12 text-center">
+        <div class="w-32 h-32 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full mx-auto mb-8 flex items-center justify-center relative overflow-hidden"><!-- Geometric Pattern Background -->
+         <div class="absolute inset-0 opacity-15">
+          <svg viewbox="0 0 128 128" class="w-full h-full"><defs>
+            <pattern id="lab-pattern" x="0" y="0" width="24" height="24" patternunits="userSpaceOnUse">
+             <circle cx="12" cy="12" r="8" fill="none" stroke="white" stroke-width="0.5" opacity="0.3" />
+             <circle cx="12" cy="12" r="4" fill="none" stroke="white" stroke-width="0.5" opacity="0.4" />
+             <path d="M4,12 L20,12 M12,4 L12,20" stroke="white" stroke-width="0.3" opacity="0.3" />
+             <circle cx="12" cy="12" r="1" fill="white" opacity="0.4" />
+            </pattern>
+           </defs> <rect width="128" height="128" fill="url(#lab-pattern)" />
+          </svg>
+         </div><!-- Main Icon -->
+         <svg class="w-16 h-16 text-white relative z-10" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M13 10V3L4 14h7v7l9-11h-7z" /> <circle cx="12" cy="12" r="2" fill="currentColor" opacity="0.6" /> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="0.5" d="M8 8l8 8 M16 8l-8 8" opacity="0.4" />
+         </svg>
+        </div>
+        <h3 class="text-3xl font-light mb-4">Innovation Lab</h3>
+        <p class="text-gray-400 mb-8">Where breakthrough ideas become reality through systematic experimentation and design.</p><button class="apple-button text-white px-6 py-3 rounded-full font-medium"> Learn More </button>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section><!-- Section Divider -->
+   <div class="section-divider"></div><!-- Contact Section -->
+   <section id="contact" class="py-32 bg-black">
+    <div class="max-w-4xl mx-auto px-6 text-center">
+     <div class="smooth-reveal">
+      <h2 class="text-5xl md:text-6xl font-thin mb-8 tracking-tight">Ready to Innovate?</h2>
+     </div>
+     <div class="smooth-reveal" style="transition-delay: 0.2s;">
+      <p class="text-xl text-gray-300 font-light mb-12 max-w-2xl mx-auto leading-relaxed">Join us in redefining the future of precision manufacturing and systematic design.</p>
+     </div><!-- Contact Information -->
+     <div class="smooth-reveal mb-12" style="transition-delay: 0.3s;">
+      <div class="glass-card rounded-3xl p-8 max-w-md mx-auto">
+       <div class="space-y-4">
+        <div>
+         <div class="text-gray-400 text-sm mb-1">
+          Email
+         </div>
+         <div class="text-white">
+          yeahytuu@outlook.com
+         </div>
+        </div>
+        <div class="section-divider my-4"></div>
+        <div>
+         <div class="text-gray-400 text-sm mb-1">
+          Telegram
+         </div><a href="https://t.me/az2756577" target="_blank" rel="noopener noreferrer" class="text-blue-500 hover:text-blue-400 transition-colors duration-300">@az2756577</a>
+        </div>
+        <div class="section-divider my-4"></div>
+        <div>
+         <div class="text-gray-400 text-sm mb-1">
+          Global Presence
+         </div>
+         <div class="text-white text-sm">
+          Shanghai • New York • Berlin
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+     <div class="smooth-reveal" style="transition-delay: 0.4s;"><button class="apple-button text-white px-12 py-4 rounded-full font-medium text-lg" id="contact-cta"> Get in Touch </button>
+     </div>
+    </div>
+   </section><!-- Footer -->
+   <footer class="py-12 bg-black border-t border-gray-800">
+    <div class="max-w-6xl mx-auto px-6">
+     <div class="flex flex-col md:flex-row justify-between items-center">
+      <div class="text-2xl font-semibold mb-4 md:mb-0">
+       NEXOR
+      </div>
+      <div class="text-gray-400 text-sm">
+       © 2025 NEXOR. Precision through design.
+      </div>
+     </div>
+    </div>
+   </footer>
+  </main>
+  <script>
+        // Element SDK Configuration
+        const defaultConfig = {
+            hero_title: "Think Different.\nBuild Perfect.",
+            hero_subtitle: "NEXOR redefines precision manufacturing through systematic aesthetics and innovative design philosophy.",
+            about_title: "Precision Redefined",
+            about_description: "We believe that true innovation comes from the perfect harmony of design, craftsmanship, and technology. NEXOR creates a global ecosystem where systematic aesthetics meets precision manufacturing.",
+            cta_text: "Get in Touch",
+            background_color: "#000000",
+            surface_color: "#1a1a1a",
+            text_color: "#ffffff",
+            primary_action_color: "#007AFF",
+            secondary_action_color: "#6b7280"
+        };
+
+        async function onConfigChange(config) {
+            // Update text content
+            const heroTitle = document.getElementById('hero-title');
+            if (heroTitle) {
+                const titleText = config.hero_title || defaultConfig.hero_title;
+                const lines = titleText.split('\n');
+                if (lines.length > 1) {
+                    heroTitle.innerHTML = `${lines[0]}<br><span class="text-shimmer">${lines[1]}</span>`;
+                } else {
+                    heroTitle.innerHTML = `<span class="text-shimmer">${titleText}</span>`;
+                }
+            }
+
+            const heroSubtitle = document.getElementById('hero-subtitle');
+            if (heroSubtitle) {
+                heroSubtitle.textContent = config.hero_subtitle || defaultConfig.hero_subtitle;
+            }
+
+            const aboutTitle = document.getElementById('about-title');
+            if (aboutTitle) {
+                aboutTitle.textContent = config.about_title || defaultConfig.about_title;
+            }
+
+            const aboutDescription = document.getElementById('about-description');
+            if (aboutDescription) {
+                aboutDescription.textContent = config.about_description || defaultConfig.about_description;
+            }
+
+            const contactCta = document.getElementById('contact-cta');
+            if (contactCta) {
+                contactCta.textContent = config.cta_text || defaultConfig.cta_text;
+            }
+
+            const heroCta = document.getElementById('hero-cta');
+            if (heroCta) {
+                heroCta.textContent = config.cta_text || defaultConfig.cta_text;
+            }
+
+            // Update colors
+            const backgroundColor = config.background_color || defaultConfig.background_color;
+            const surfaceColor = config.surface_color || defaultConfig.surface_color;
+            const textColor = config.text_color || defaultConfig.text_color;
+            const primaryActionColor = config.primary_action_color || defaultConfig.primary_action_color;
+            const secondaryActionColor = config.secondary_action_color || defaultConfig.secondary_action_color;
+
+            document.body.style.backgroundColor = backgroundColor;
+            document.body.style.color = textColor;
+
+            // Update navigation
+            const nav = document.querySelector('nav');
+            if (nav) {
+                nav.style.backgroundColor = backgroundColor + 'cc';
+            }
+
+            // Update primary action buttons
+            const primaryButtons = document.querySelectorAll('.apple-button');
+            primaryButtons.forEach(button => {
+                button.style.background = `linear-gradient(135deg, ${primaryActionColor} 0%, #0051D5 100%)`;
+            });
+
+            // Update blue accent colors
+            const blueElements = document.querySelectorAll('.text-blue-500');
+            blueElements.forEach(element => {
+                element.style.color = primaryActionColor;
+            });
+        }
+
+        function mapToCapabilities(config) {
+            return {
+                recolorables: [
+                    {
+                        get: () => config.background_color || defaultConfig.background_color,
+                        set: (value) => {
+                            config.background_color = value;
+                            window.elementSdk.setConfig({ background_color: value });
+                        }
+                    },
+                    {
+                        get: () => config.surface_color || defaultConfig.surface_color,
+                        set: (value) => {
+                            config.surface_color = value;
+                            window.elementSdk.setConfig({ surface_color: value });
+                        }
+                    },
+                    {
+                        get: () => config.text_color || defaultConfig.text_color,
+                        set: (value) => {
+                            config.text_color = value;
+                            window.elementSdk.setConfig({ text_color: value });
+                        }
+                    },
+                    {
+                        get: () => config.primary_action_color || defaultConfig.primary_action_color,
+                        set: (value) => {
+                            config.primary_action_color = value;
+                            window.elementSdk.setConfig({ primary_action_color: value });
+                        }
+                    },
+                    {
+                        get: () => config.secondary_action_color || defaultConfig.secondary_action_color,
+                        set: (value) => {
+                            config.secondary_action_color = value;
+                            window.elementSdk.setConfig({ secondary_action_color: value });
+                        }
+                    }
+                ],
+                borderables: [],
+                fontEditable: undefined,
+                fontSizeable: undefined
+            };
+        }
+
+        function mapToEditPanelValues(config) {
+            return new Map([
+                ["hero_title", config.hero_title || defaultConfig.hero_title],
+                ["hero_subtitle", config.hero_subtitle || defaultConfig.hero_subtitle],
+                ["about_title", config.about_title || defaultConfig.about_title],
+                ["about_description", config.about_description || defaultConfig.about_description],
+                ["cta_text", config.cta_text || defaultConfig.cta_text]
+            ]);
+        }
+
+        // Initialize Element SDK
+        if (window.elementSdk) {
+            window.elementSdk.init({
+                defaultConfig,
+                onConfigChange,
+                mapToCapabilities,
+                mapToEditPanelValues
+            });
+        }
+
+        // Intersection Observer for smooth reveals
+        function initScrollAnimations() {
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.smooth-reveal').forEach(element => {
+                observer.observe(element);
+            });
+        }
+
+        // Parallax effect for floating orbs
+        function initParallaxEffect() {
+            document.addEventListener('mousemove', (e) => {
+                const mouseX = (e.clientX / window.innerWidth - 0.5) * 2;
+                const mouseY = (e.clientY / window.innerHeight - 0.5) * 2;
+                
+                document.querySelectorAll('.floating-orb').forEach((orb, index) => {
+                    const speed = (index + 1) * 0.3;
+                    const x = mouseX * speed * 20;
+                    const y = mouseY * speed * 20;
+                    orb.style.transform = `translate(${x}px, ${y}px)`;
+                });
+            });
+        }
+
+        // Initialize all effects
+        document.addEventListener('DOMContentLoaded', () => {
+            initScrollAnimations();
+            initParallaxEffect();
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Button interactions
+        document.querySelectorAll('.apple-button').forEach(button => {
+            button.addEventListener('click', function(e) {
+                e.preventDefault();
+                const originalText = this.textContent;
+                this.textContent = 'Message Sent';
+                this.style.background = 'linear-gradient(135deg, #34D399 0%, #10B981 100%)';
+                
+                setTimeout(() => {
+                    this.textContent = originalText;
+                    this.style.background = '';
+                }, 2000);
+            });
+        });
+
+        // Product card interactions
+        document.querySelectorAll('.product-card').forEach(card => {
+            card.addEventListener('click', function(e) {
+                e.preventDefault();
+                const statusElement = this.querySelector('.text-xs');
+                const originalText = statusElement.textContent;
+                statusElement.textContent = 'Launching Soon';
+                statusElement.style.color = '#007AFF';
+                
+                setTimeout(() => {
+                    statusElement.textContent = originalText;
+                    statusElement.style.color = '';
+                }, 1500);
+            });
+        });
+    </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'99826c2715ffd754',t:'MTc2MjA3MzgyNi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
